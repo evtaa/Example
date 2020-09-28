@@ -65,7 +65,7 @@ extension ViewController: WKNavigationDelegate {
                 dict[key] = value
                 return dict
         }
-        
+        // новый код
         let token = params["access_token"]
         let userId = params["user_id"]
         Session.instance.userId = userId
@@ -76,10 +76,12 @@ extension ViewController: WKNavigationDelegate {
         decisionHandler(.cancel)
         
         let vkService = VKService()
-               vkService.getFriends(userId: Session.instance.userId!)
+               
                vkService.getPhotographes(userId: Session.instance.userId!)
+        vkService.getFriends(userId: Session.instance.userId!)
+                vkService.getGroupsSearch(search: "Music")
                vkService.getGroups(userId: Session.instance.userId!)
-               vkService.getGroupsSearch(search: "Music")
+              
     }
 }
 
